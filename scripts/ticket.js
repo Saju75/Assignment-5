@@ -44,55 +44,62 @@ for (const button of buttons) {
         updateGrandTotal();
     });
 };
+function updateGrandTotal(status) {
+    const totalPrice = document.getElementById('total-price').innerText;
+    if (status === undefined) {
+        document.getElementById('grand-total').innerText = totalPrice;
+
+    }
+    else {
+        const inputValue = document.getElementById('check-input');
+        const inputText = inputValue.value;
+        // console.log(inputText);
+        const couponCode = document.getElementById('coupon-code').innerText;
+        console.log(couponCode);
+        const couponCode2 = document.getElementById('coupon').innerText;
+        // console.log(couponCode2);
+        if (inputText === couponCode) {
+            const discounted = totalPrice * 0.15;
+            document.getElementById('grand-total').innerText = parseInt(totalPrice) - parseInt(discounted);
+            const inputHidden = document.getElementById('input');
+            inputHidden.classList.add("hidden");
+        }
+        else if (inputText === couponCode2) {
+            const discounted = totalPrice * 0.20;
+            document.getElementById('grand-total').innerText = parseInt(totalPrice) - parseInt(discounted);
+            const inputHidden = document.getElementById('input');
+            inputHidden.classList.add("hidden");
+        }
+        else {
+            alert("please give a valid coupon code");
+        }
+
+    }
+
+
+}
+
+
 // function updateGrandTotal(status) {
-//     const totalPrice = document.getElementById('total-price').innerText;
+//     const totalPrice = document.getElementById("total-price").innerText;
 //     if (status === undefined) {
 //         document.getElementById('grand-total').innerText = totalPrice;
-//     }
-//     else {
-//         const couponCode = document.getElementById('coupon-code').innerText;
-//         const couponCode2 = document.getElementById('coupon').innerText;
+//     } else {
+//         const couponCode = document.getElementById("coupon-code").innerText;
+//         // const couponCode2 = document.getElementById('coupon').innerText;
 //         if (couponCode === "NEW15") {
 //             const discounted = totalPrice * 0.15;
-//             document.getElementById('grand-total').innerText = parseInt(totalPrice) - parseInt(discounted);
-//             const inputHidden = document.getElementById('input');
+//             document.getElementById("grand-total").innerText = parseInt(totalPrice) - parseInt(discounted);
+//             const inputHidden = document.getElementById("input");
 //             inputHidden.classList.add("hidden");
-//         }
-//         else {
-
-//             if (couponCode2 === "Couple 20"||couponCode === "Couple 20") {
-//                 const discounted = totalPrice * 0.20;
-//                 document.getElementById('grand-total').innerText = parseInt(totalPrice) - parseInt(discounted);
-//             }
-//             else {
-//                 alert("please give a valid coupon code");
-//             }
-
+//         }else{
+//             alert('Unvalid');
+//             return;
 //         }
 
 
 //     }
 // }
-function updateGrandTotal(status) {
-    const totalPrice = document.getElementById("total-price").innerText;
-    if (status === undefined) {
-        document.getElementById('grand-total').innerText = totalPrice;
-    } else {
-        const couponCode = document.getElementById("coupon-code").innerText;
-        // const couponCode2 = document.getElementById('coupon').innerText;
-        if (couponCode === "NEW15") {
-            const discounted = totalPrice * 0.15;
-            document.getElementById("grand-total").innerText = parseInt(totalPrice) - parseInt(discounted);
-            const inputHidden = document.getElementById("input");
-            inputHidden.classList.add("hidden");
-        }else{
-            alert('Unvalid');
-            return;
-        }
-
-
-    }
-}
 
 
 
