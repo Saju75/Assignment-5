@@ -95,7 +95,7 @@
                             <img src="images/cupon-devider.png" alt="">
                         </div>
                         <div class="pt-20 pl-10">
-                            <h1 class="text-4xl font-extrabold">NEW15</h1>
+                            <h1 id="coupon-code" class="text-4xl font-extrabold">NEW15</h1>
                             <p class="
                         text-3xl text-[#03071299] font-medium">Coupon Code</p>
                         </div>
@@ -112,7 +112,7 @@
                             <img src="images/cupon-devider.png" alt="">
                         </div>
                         <div class="pt-20 pl-10">
-                            <h1 class="text-4xl font-extrabold">Couple 20</h1>
+                            <h1 id="coupon" class="text-4xl font-extrabold">Couple 20</h1>
                             <p class="
                             text-3xl text-[#03071299] font-medium">Coupon Code</p>
                         </div>
@@ -126,7 +126,7 @@
                     Offers</button>
             </div>
         </section>
-        <section class="mt-36 border-t-2 border-[#1DD100] rounded-t-[70px] bg-[#F7F8F8]">
+        <section class="bg-[#F7F8F8] mt-36 border-t-2 border-[#1DD100] rounded-t-[70px] ">
             <!-- per seat value -->
             <div class="">
                 <div class="text-center pt-28 pb-10">
@@ -147,7 +147,7 @@
                             </div>
                             <button class="btn text-[#1DD100] bg-[#1DD1001A] text-xl font-medium">
                                 <img src="images/seat-green.png" alt="">
-                                <span>8</span> Seats left
+                                <span id="available-seat">8</span> Seats left
                             </button>
                         </div>
                         <div class="bg-[#F7F8F8] rounded-2xl w-[810px] h-[254px] ml-8">
@@ -178,14 +178,14 @@
                         <img src="images/info-devider.png" alt="">
                         <div class="pt-40">
                             <img class="pl-24" src="images/fare.png" alt="">
-                            <h1 class="font-bold text-4xl pl-10 pt-6">550 Taka</h1>
+                            <h1 class="font-bold text-4xl pl-10 pt-6"><span>550</span> Taka</h1>
                             <p class="text-[#03071299] pl-14 pt-2 font-medium text-3xl">Per Seat</p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- select your seat -->
-            <div class="flex flex-row gap-12 ml-40 bg-white rounded-[30px] w-[1170px] h-[500px] mt-10">
+            <div class="flex flex-row gap-12 ml-40 bg-white rounded-[30px] w-[1170px] h-[520px] mt-10">
                 <div>
                     <h1 class="font-semibold text-2xl pl-8 pt-10">Select Your Seat</h1>
                     <hr class="border-t-2 border-dashed border-gray-500 my-4">
@@ -226,30 +226,47 @@
                     <div>
                         <h1 class="font-semibold text-2xl pl-8 pt-10">Select Your Seat</h1>
                         <hr class="border-t-2 border-dashed border-gray-500 my-4">
-                        <div class="bg-[#F7F8F8] rounded-2xl w-[450px] h-[350px] pt-6 pl-6">
-                            <div class="grid grid-cols-3">
-                                <div class="flex flex-row">
-                                    <h1 class="font-semibold text-xl">Seat</h1>
-                                    <div class="bg-[#1DD100] w-[25px] h-[20px] rounded-full text-center">
-                                        <span id="seat-count">0</span>
-                                    </div>
-                                </div>
-                                <h2 class="font-semibold text-2xl">Class</h2>
-                                <h3 class="font-semibold text-2xl">Price</h3>
+                        <div class="bg-[#F7F8F8] rounded-2xl w-[450px] h-[450px] pt-6 pl-6 mb-4">
+                            <div class="overflow-x-auto">
+                                <table class="table">
+                                    <!-- head -->
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="flex flex-row">
+                                                    <h1 class="font-semibold text-xl text-black">Seat</h1>
+                                                    <div
+                                                        class="bg-[#1DD100] w-[25px] h-[15px] rounded-full text-center">
+                                                        <span id="seat-count">0</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <h2 class="font-semibold text-2xl text-black">Class</h2>
+                                            </th>
+                                            <th>
+                                                <h3 class="font-semibold text-2xl text-black">Price</h3>
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="seat-click-containeer">
+                                    </tbody>
+                                </table>
                             </div>
                             <hr class="border-t-2 border-dashed border-gray-500 my-4">
-                            <div class="flex flex-row justify-between">
+                            <div class="flex flex-row gap-48">
                                 <h1 class="font-semibold text-2xl pb-6">Total Price</h1>
-                                <h2 class="font-semibold text-2xl">BDT<span>0</span></h2>
+                                <h2 class="font-semibold text-2xl">BDT<span id="total-price">0</span></h2>
                             </div>
-                            <div>
+                            <div id="input">
                                 <input type="text" placeholder="Have any copupon?"
                                     class="input input-bordered w-full max-w-xs" />
-                                <button class="btn bg-[#1DD100] text-white">Apply</button>
+                                <button onclick="updateGrandTotal('apply-btn')" class="btn bg-[#1DD100] text-white">Apply</button>
                             </div>
-                            <div class="flex flex-row justify-between pt-6">
+                            <div class="flex flex-row gap-48 pt-6">
                                 <h1 class="font-semibold text-2xl">Grand Total</h1>
-                                <h2 class="font-semibold text-2xl">BDT<span>0</span></h2>
+                                <h2 class="font-semibold text-2xl">BDT<span id="grand-total">0</span></h2>
                             </div>
                         </div>
                         <!-- Open the modal using ID.showModal() method -->
@@ -277,11 +294,9 @@
                     </div>
                 </div>
             </div>
-
         </section>
-
     </main>
-    <footer class="bg-black mt-28">
+    <footer class="bg-black mt-36">
         <div class="flex flex-row gap-x-[400px] pl-40 pt-28 pb-10 ">
             <div>
                 <h1 class="font-extrabold text-4xl text-white pb-6">P-Ticket</h1>
